@@ -136,8 +136,9 @@
 	<div class="panel panel-primary" style="margin: 20px;">
 		<div class="panel-header"> 签到二维码</div>
 		<div class="panel-body" style="text-align: center;">
-			<img src="{{asset('admin/temp/qrcode.jpg')}}" class="thumbnail" style="margin-bottom: 20px; max-height: 350px;"><br>
-			<input class="btn btn-primary size-M radius" onclick="qrcode()" type="button" value="点击放大">
+
+			<div align="center" id="qrcode"></div><br>
+			{{--<input class="btn btn-primary size-M radius" onclick="qrcode()" type="button" value="点击放大">--}}
 		</div>
 	</div>
 </section>
@@ -151,17 +152,22 @@
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">
-	function qrcode(){
-		layer.open({
-			type: 1,
-			title: '签到二维码',
-			shadeClose: true,
-			shade: false,
-			maxmin: true, //开启最大化最小化按钮
-			area: ['893px', '600px'],
-			content: '<img src="{{asset('admin/temp/qrcode.jpg')}}" class="thumbnail" style="margin:0 auto 20px;height:90%;">'
-		});
-	}
+	{{--function qrcode(){--}}
+		{{--layer.open({--}}
+			{{--type: 1,--}}
+			{{--title: '签到二维码',--}}
+			{{--shadeClose: true,--}}
+			{{--shade: false,--}}
+			{{--maxmin: true, //开启最大化最小化按钮--}}
+			{{--area: ['893px', '600px'],--}}
+			{{--content: '<img src="{{asset('admin/temp/qrcode.jpg')}}" class="thumbnail" style="margin:0 auto 20px;height:90%;">'--}}
+		{{--});--}}
+	{{--}--}}
+    $('#qrcode').qrcode({
+        text: "http://www.sucaihuo.com/",
+        height: 150,
+        width: 150
+    })
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 
