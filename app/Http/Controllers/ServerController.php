@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Model\Book;
+use App\Http\Model\Wechat;
 use EasyWeChat\Factory;
 use EasyWeChat\Kernel\Messages\Image;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class ServerController extends Controller
             switch ($message['MsgType']) {
                 case 'event':
                     if ($message['EventKey'] == 'sign') {
-                        return $message['ScanCodeInfo']['ScanResult'];
+                        return $this->sign($message['FromUserName'], $message['ScanCodeInfo']['ScanResult']);
                     }else {
                         return $message['EventKey'] . '收到事件消息';
                     }
@@ -56,12 +57,17 @@ class ServerController extends Controller
         return $response;
     }
 
-    public function sign()
+    public function sign($openid, $time)
     {
-//        Book::where('book_id', $id)->update(['book_status' => 2]);
-//        return [
-//            'status' => 0,
-//            'msg' => '置为暂离状态！'
-//        ];
+        if (time()-$time > 10)
+            return '该二维码已过期！';
+        $user_id = Wechat::where('openid', $openid)->first()->user_id;
+        $re = Book::where('user_id', $user_id)
+            ->where('start_time', '<', $time)
+            ->where('end_time', '>', $time)
+            ->update(['book_status' => 1]);
+        if ($re == null)
+            return '当前没有预约，请先预约后再来签到！';
+        return '签到成功！';
     }
 }

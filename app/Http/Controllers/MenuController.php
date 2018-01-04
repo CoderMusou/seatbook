@@ -33,13 +33,13 @@ class MenuController extends Controller
         $buttons = [
             [
                 "type" => "scancode_waitmsg",
-                "name" => "签到",
+                "name" => "🙋🏻‍♂️我要签到",
                 "key"  => "sign"
             ],
             [
-                "type" => "click",
-                "name" => "点击",
-                "key"  => "click"
+                "type" => "view",
+                "name" => "🗓预约座位",
+                "url"  => "http://test.wseek.cn"
             ],
         ];
         $app->menu->create($buttons);

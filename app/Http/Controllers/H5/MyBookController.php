@@ -18,12 +18,14 @@ class MyBookController extends Controller
             ->leftJoin('seat', 'book.seat_id', '=', 'seat.seat_id')
             ->leftJoin('room', 'seat.room_id', '=', 'room.room_id')
             ->where('user_id', $user_id)
+            ->orderby('start_time', 'desc')
             ->get();
         $expire_books = DB::table('book')
             ->leftJoin('seat', 'book.seat_id', '=', 'seat.seat_id')
             ->leftJoin('room', 'seat.room_id', '=', 'room.room_id')
             ->where('user_id', $user_id)
             ->where('book_status', 5)
+            ->orderby('start_time', 'desc')
             ->get();
         return view('h5.book', compact('book_status','book_color','books','expire_books'));
     }
