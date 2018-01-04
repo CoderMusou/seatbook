@@ -15,15 +15,14 @@
     <div id="title">
         <p>学号绑定</p>
     </div>
-    <form action="/user/bind" method="post">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <form>
         <div class="userName">
             <lable>学&nbsp;&nbsp;&nbsp;号：</lable>
-            <input type="text" name="user_num" placeholder="请输入学号" pattern="[0-9]{6,16}" required/>
+            <input type="text" id="user_num" placeholder="请输入学号" pattern="[0-9]{6,16}" required/>
         </div>
         <div class="passWord">
             <lable>密&nbsp;&nbsp;&nbsp;码：</lable>
-            <input type="password" name="user_pass" placeholder="请输入密码" pattern="[0-9A-Za-z]{6,25}" required/>
+            <input type="password" id="user_pass" placeholder="请输入密码" pattern="[0-9A-Za-z]{6,25}" required/>
         </div>
         <div class="choose_box">
             密码默认为：123456

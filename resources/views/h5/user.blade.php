@@ -37,26 +37,9 @@
         </div>
 
         <div class="weui_cell">
-            <div class="weui_cell_hd"><label class="weui_label">性别</label></div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" name="user_sex">
-                    <option value="0">男</option>
-                    <option @if($user->user_sex == 1) selected @endif value="1">女</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="weui_cell">
             <div class="weui_cell_hd"><label class="weui_label">学号</label></div>
             <div class="weui_cell_bd weui_cell_primary">
                 <input class="weui_input" type="number" name="user_num" pattern="[0-9]*" placeholder="请输入学号" value="{{$user->user_num}}"/>
-            </div>
-        </div>
-
-        <div class="weui_cell">
-            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" name="user_tel" pattern="[0-9]*" placeholder="请输入手机号" value="{{$user->user_tel}}"/>
             </div>
         </div>
         <div class="weui_btn_area">
