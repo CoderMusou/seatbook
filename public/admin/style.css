@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'adminthemesregular';
+    src: url('font/adminthemes-webfont.eot');
+    src: url('font/adminthemes-webfont.eot?#iefix') format('embedded-opentype'),
+    url('font/adminthemes-webfont.woff2') format('woff2'),
+    url('font/adminthemes-webfont.woff') format('woff'),
+    url('font/adminthemes-webfont.ttf') format('truetype'),
+    url('font/adminthemes-webfont.svg#adminthemesregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.uploadImg{display:inline-block;padding:15px;background:#f8f8f8;position:relative;border:1px #5a98de solid;}
+.uploadImg input{display:none;}
+.uploadImg span{display:block;font-size:12px;text-align:center;color:#5a98de;}
+.uploadImg span:hover{color:#5a98de;}
+.uploadImg span:before{content:"#";font-family:'adminthemesregular';display:block;font-size:40px;}
+#thumb_img{position: absolute;max-width: 300px;max-height: 84px;margin-left: 20px;}
