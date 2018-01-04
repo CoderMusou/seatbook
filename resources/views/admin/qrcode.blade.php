@@ -148,6 +148,7 @@
 <script type="text/javascript" src="{{asset('admin/lib/layer/2.4/layer.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/static/h-ui/js/H-ui.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/static/h-ui.admin/js/H-ui.admin.page.js')}}"></script>
+<script src="{{asset('admin/lib/jquery.qrcode.min.js')}}"></script>
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
@@ -163,11 +164,23 @@
 			{{--content: '<img src="{{asset('admin/temp/qrcode.jpg')}}" class="thumbnail" style="margin:0 auto 20px;height:90%;">'--}}
 		{{--});--}}
 	{{--}--}}
-    $('#qrcode').qrcode({
-        text: "http://www.sucaihuo.com/",
-        height: 150,
-        width: 150
-    })
+    $(function(){
+        qrcode();
+    });
+    function timest() {
+        var tmp = Date.parse( new Date() ).toString();
+        tmp = tmp.substr(0,10);
+        return tmp;
+    }
+	function qrcode() {
+        $('#qrcode').html("");
+        $('#qrcode').qrcode({
+            text: timest(),
+            height: 350,
+            width: 350
+        })
+    }
+    window.setInterval("qrcode()",10000);
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 
