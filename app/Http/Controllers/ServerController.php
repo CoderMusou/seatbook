@@ -65,6 +65,7 @@ class ServerController extends Controller
         $re = Book::where('user_id', $user_id)
             ->where('start_time', '<', $time)
             ->where('end_time', '>', $time)
+            ->where('book_status', 0)
             ->update(['book_status' => 1]);
         if ($re == null)
             return '当前没有预约，请先预约后再来签到！';
