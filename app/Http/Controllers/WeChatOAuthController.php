@@ -29,10 +29,12 @@ class WeChatOAuthController extends Controller
         $re = Wechat::where('openid',$user->getId())->first();
         if ($re == null){       //判断微信用户是否存档
             Wechat::create($userInfo);
+            $_SESSION['user_id'] = null;
+        }else{
+            $_SESSION['user_id'] = $re->user_id;
         }
 
         $_SESSION['wechat_user'] = $user->toArray();
-        $_SESSION['user_id'] = $re->user_id;
         $targetUrl = empty($_SESSION['target_url']) ? '/' : $_SESSION['target_url'];
 
         return redirect($targetUrl);
