@@ -26,6 +26,9 @@ class WeChatOAuth
             return $oauth->redirect();
         }
 
+        if (!isset($_SESSION['user_id'])){
+            return redirect('/user/bind');
+        }
         if ($_SESSION['user_id'] == null){//判断是否绑定
             return redirect('/user/bind');
         }
